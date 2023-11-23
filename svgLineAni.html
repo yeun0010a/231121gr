@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>svgLineAni</title>
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+      
+        /* svg 경계 외부의 내용 보이게 하기 */
+        svg{overflow: visible;}
+        
+        rect{
+            /* 700은 윤곽선(strok)의 대시 배열
+            대시배열은 svg에서 사용괴는 운곽선을 지정하는데 사용하는 용어
+            대시배열을 동해 실선, 공백, 선등을 번갈아가며 나타내는 선의 패턴 */
+            stroke-dasharray: 700; /*실선의 길이 700의 길이로 아루어진 패턴*/
+            stroke-dashoffset: 700; /*이러한 패턴이 어디에서 시작하는지 나타냄*/
+            /* stroke-dashoffset 시작 위치 조절
+            선이 그려지는 효과를 만듬 */
+            animation : draw 2s forwards
+            /* forwards: 애니메이션이 완료된 후에 상태를 유지하게 하는 옵션*/
+        }
+        @keyframes draw {
+            to{
+                stroke-dashoffset: 0; /*대시옵셋 0으로 설정하여 선이 그려지도록 함*/
+            } 
+        }
+
+        /*
+                
+        rect{            
+            stroke-dasharray: 700; 
+            stroke-dashoffset: 700; 
+            animation : draw 2s forwards}
+        @keyframes draw {
+            to{stroke-dashoffset: 0;} 
+        }
+        
+        700의 실선, 700의 공백이 반복되게 만들고( stroke-dasharray: 700;) 선의 시작지점을 700위치로 해서(stroke-dashoffset: 700;)  안보이게 만듦
+        그 후에 선의 시작지점을 0으로(to{stroke-dashoffset: 0;) 2초동안 옮겨(animation : ~ 2s ~) 선이 그려지는것처럼 보이게 만듦
+            그리고 반복되지 않게 함(~forwards) */
+
+
+    </style>
+</head>
+<body>
+    <!-- vewbox : SVG의 크기와 좌표시스템 정의하는데 사용하는 구조 -->
+    <!-- 0 0 280 130 =minX, minY, width, height -->
+    <svg width="280" height="130" viewBox="0 0 280 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="15" y="15" width="250" height="100" rx="50" stroke="#0047FF" stroke-width="30"/>
+        </svg>
+        
+        <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="15" y="15" width="100" height="100" rx="50" stroke="white" stroke-width="30"/>
+        </svg>
+</body>
+</html>
